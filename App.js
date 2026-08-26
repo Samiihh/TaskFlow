@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import Button from './src/components/Button';
+import TaskCard from './src/components/TaskCard';
 
 export default function App() {
   function press () {
@@ -8,11 +8,8 @@ export default function App() {
   }
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <Button
-        label={'Enviar'}
-        onPress={press}
-      />
+      {/* <Text>Open up App.js to start working on your app!</Text> */}
+      
       <StatusBar style="auto" />
     </View>
   );
