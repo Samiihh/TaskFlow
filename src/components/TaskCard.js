@@ -65,7 +65,7 @@ export default function TaskCard({
 
                     {task.done ? (
                         <Text style={styles.checkmark}>
-                            &#9989
+                            ✔️
                         </Text>
                     ) : null}
                 </Pressable>
@@ -112,6 +112,72 @@ const styles = StyleSheet.create({
         color: colors.primary,
         fontWeight: '700',
         fontSize: 12,
-    }
+    },
+    priorityBadge : {
+        backgroundColor: colors.secondary,
+        borderRadius: 999,
+        paddingHorizontal:10,
+        paddingVertical: 5,
+    },
+    priorityText :{
+        color: colors.primaryDark,
+        fontSize: 11,
+        fontWeight: '700',
+    }, 
+    title :{
+        color: colors.text,
+        fontSize: 17,
+        fontWeight: '800',
+    },
+    titleDone :{
+        textDecorationLine: 'line-through',
+        color: colors.textMuted,
+    },
+    description :{
+        color: colors.textMuted,
+        lineHeight: 20,
+    },
+
+    // Linha do status
+
+    statusRow : {
+        flexDirection: 'row',
+        alignItems:'center',
+        gap: 8,
+        marginTop:4,
+    },
+
+    checkbox :{
+        width: 22,
+        height: 22,
+        borderWidth:2,
+        borderColor: colors.border,
+
+        borderRadius: 6,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: colors.surface,
+    },
+    checkboxChecked : {
+        backgroundColor: colors.sucess,
+        borderColor: colors.sucess,
+    },
+
+    checkmark :{
+        color: colors.surface,
+        fontSize: 14,
+        fontWeight:'900',
+    },
+
+    pendingText: {
+        color: colors.warning,
+        fontSize: 12, 
+        fontWeight: '700',
+    },
+    doneText: {
+        color: colors.sucess,
+        fontSize: 12, 
+        fontWeight: '700',
+    },
 
 })
