@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Button, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from "react-native";
 import Input from "../components/Input";
+import Botao from "../components/Botao";
 
 export default function LoginScreen({ navigation, onLogin }) {
 
@@ -81,45 +82,46 @@ export default function LoginScreen({ navigation, onLogin }) {
                         Entre para organizar suas tarefas do dia.
                     </Text>
 
-                    {/* formulario */}
-
-                    <View style={styles.form}>
-                        {/* campos de input do formulario */}
-                        <Input
-                            label="Seu nome"
-                            value={name}
-                            onChangeText={setName}
-                            placeHolder="Digit seu nome"
-                        />
-                        <Input
-                            label="E-mail"
-                            value={email}
-                            onChangeText={setEmail}
-                            placeHolder="Digite seu e-mail"
-                        />
-                        <Input
-                            label="Senha"
-                            value={passWord}
-                            onChangeText={setPassWord}
-                            placeHolder="Digite sua senha"
-                        />
-
-
-                        {/* mensagem de erro */}
-
-                        {error ? (
-                            <Text style={styles.error}>
-                                {error}
-                            </Text>
-                        ) : null}
-                    </View>
-
-
-
-
-
                 </View>
 
+                {/* formulario */}
+                <View style={styles.form}>
+                    {/* campos de input do formulario */}
+                    <Input
+                        label="Seu nome"
+                        value={name}
+                        onChangeText={setName}
+                        placeHolder="Digit seu nome"
+                    />
+                    <Input
+                        label="E-mail"
+                        value={email}
+                        onChangeText={setEmail}
+                        placeHolder="Digite seu e-mail"
+                    />
+                    <Input
+                        label="Senha"
+                        value={passWord}
+                        onChangeText={setPassWord}
+                        placeHolder="Digite sua senha"
+                    />
+
+
+                    {/* mensagem de erro */}
+
+                    {error ? (
+                        <Text style={styles.error}>
+                            {error}
+                        </Text>
+                    ) : null}
+
+                    {/* Botão de entrar */}
+
+                    <Botao
+                        label="Entrar"
+                        onPress={handleSubmit}
+                    />
+                </View>
 
             </ScrollView>
         </KeyboardAvoidingView>

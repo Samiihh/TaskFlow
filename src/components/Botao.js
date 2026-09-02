@@ -1,7 +1,7 @@
 import { Pressable, StyleSheet, Text } from "react-native";
 import { colors } from "../styles/colors";
 
-export default function Button ({label, onPress, disabled = false}) {
+export default function Botao ({label, onPress, disabled = false}) {
     return (
 
         <Pressable
