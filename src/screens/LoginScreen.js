@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from "react-native";
 import Input from "../components/Input";
 import Botao from "../components/Botao";
+import { colors } from "../styles/colors";
 
 export default function LoginScreen({ navigation, onLogin }) {
 
@@ -129,5 +130,63 @@ export default function LoginScreen({ navigation, onLogin }) {
 }
 
 const styles = StyleSheet.create({
+    flex: {
+        flex: 1,
+        backgroundColor: colors.background,
+    },
+    container: {
+        flexGrow: 1,
+        justifyContent: 'center',
+        paddingHorizontal: 24,
+        paddingVertical: 32,
+        gap: 32,
+    },
+    brand: {
+        alignItems: 'center'
+    },
+
+    logo: {
+        width: 70,
+        height: 70,
+        borderRadius: 22,
+        backgroundColor: colors.primary,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    logoText: {
+        color: colors.surface,
+        fontSize: 34,
+        fontWeight: '900',
+        lineHeight:38,
+    },
+    title: {
+        marginTop: 18,
+        color: colors.text,
+        fontSize: 26,
+        fontWeight: '900',
+        textAlign: 'center',
+        lineHeight: 32,
+    },
+    subtitle: {
+        marginTop: 8,
+        color: colors.textMuted,
+        fontSize: 14,
+        textAlign: 'center',
+        lineHeight: 20,
+        maxWidth: 300,
+    }, 
+
+    form: {
+        width:'100%',
+        maxWidth: 420,
+        alignSelf:'center'
+    }, 
+    error : {
+        color:colors.danger,
+        fontSize:13,
+        fontWeight:'600',
+        lineHeight:18,
+    }
+
 
 })
