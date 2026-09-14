@@ -1,136 +1,179 @@
-import { useState } from "react";
-import { Button, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from "react-native";
-import Input from "../components/Input";
-import Botao from "../components/Botao";
-import { colors } from "../styles/colors";
+
+import { useState } from 'react';
+
+import {
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
+
+import { colors } from '../styles/colors';
+import Input from '../components/Input';
+import Botao from '../components/Botao';
+
 
 export default function LoginScreen({ navigation, onLogin }) {
 
-    // estado responsavel pelos dados digitados no formulario.
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [passWord, setPassWord] = useState('');
-    const [error, setError] = useState('');
-
-    function handleSubmit() {
-        if (
-            !name.trim()
-            || !email.trim()
-            || !passWord.trim()
-        ) {
-            setError('Preencha todos os campos.');
-
-            return;
-        }
-
-        if (
-            email !== 'aluno@senac.com'
-            || passWord !== '123'
-        ) {
-            setError('E-mail e senha inválidos.')
-        }
-
-        setError('');
-
-        // Função recebida via props
-
-        // onLogin  foi recebida do componente pai
-
-        onLogin(name.trim());
 
 
-        navigation.reset({
-            // index informa qual rota sera considerada ativa
-            index: 0,
+  // Estado responsável pelo nome digitado.
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
-            routes: [
-                {
-                    name: 'Home'
-                },
-            ],
-        })
+  function handleSubmit() {
+
+    if (
+      !name.trim()
+      || !email.trim()
+      || !password.trim()
+    ) {
+
+      setError('Preencha todos os campos.');
+      return;
     }
 
-    return (
+    if (
+      email !== 'aluno@senac.com'
+      || password !== '1234'
+    ) {
 
-        <KeyboardAvoidingView
-            style={styles.flex}
-            behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-        >
+      setError('E-mail ou senha inválidos.');
 
-            <ScrollView
-                contentContainerStyle={styles.container}
-                // permite que tenhamos interações com os campos mesmo com o teclado aberto.
-                keyboardShouldPersistTaps="handled"
-            >
+      return;
+    }
 
-                <View styles={styles.brand}>
+    // Limpamos uma possível mensagem de erro anterior.
+    setError('');
 
-                    {/* Logo */}
-                    <View style={styles.logo}>
-                        <Text style={styles.logoText}>{'\u2713'}</Text>
-                    </View>
+    onLogin(name.trim());
 
 
-                    {/* Titulo */}
-                    <Text style={styles.title}>
-                        Bem-Vindo ao TaskFlow
-                    </Text>
+    navigation.reset({
 
-                    {/* subtitulo */}
+      // index informa qual rota será considerada ativa.
+   
+      index: 0,
 
-                    <Text styles={styles.subtitle}>
-                        Entre para organizar suas tarefas do dia.
-                    </Text>
-
-                </View>
-
-                {/* formulario */}
-                <View style={styles.form}>
-                    {/* campos de input do formulario */}
-                    <Input
-                        label="Seu nome"
-                        value={name}
-                        onChangeText={setName}
-                        placeHolder="Digit seu nome"
-                    />
-                    <Input
-                        label="E-mail"
-                        value={email}
-                        onChangeText={setEmail}
-                        placeHolder="Digite seu e-mail"
-                    />
-                    <Input
-                        label="Senha"
-                        value={passWord}
-                        onChangeText={setPassWord}
-                        placeHolder="Digite sua senha"
-                    />
+      // routes define quais telas existirão
+      // na nova pilha de navegação.
+      routes: [
+        {
+          name: 'Home',
+        },
+      ],
+    });
+  }
 
 
-                    {/* mensagem de erro */}
+  return (
 
-                    {error ? (
-                        <Text style={styles.error}>
-                            {error}
-                        </Text>
-                    ) : null}
+    <KeyboardAvoidingView
 
-                    {/* Botão de entrar */}
+      style={styles.flex}
 
-                    <Botao
-                        label="Entrar"
-                        onPress={handleSubmit}
-                    />
-                </View>
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+    >
 
-            </ScrollView>
-        </KeyboardAvoidingView>
-    )
+
+
+      <ScrollView
+
+        contentContainerStyle={styles.container}
+        keyboardShouldPersistTaps="handled"
+      >
+
+        <View style={styles.brand}>
+
+          <View style={styles.logo}>
+
+            <Text style={styles.logoText}>
+              ✓
+            </Text>
+
+          </View>
+
+
+          {/* -----------------------------------------------------------------
+              TÍTULO
+          ----------------------------------------------------------------- */}
+
+          <Text style={styles.title}>
+            Bem-vindo ao TaskFlow
+          </Text>
+
+
+          {/* -----------------------------------------------------------------
+              SUBTÍTULO
+          ----------------------------------------------------------------- */}
+
+          <Text style={styles.subtitle}>
+            Entre para organizar suas tarefas do dia.
+          </Text>
+
+        </View>
+
+
+        {/* -------------------------------------------------------------------
+            FORMULÁRIO
+        ------------------------------------------------------------------- */}
+
+        <View style={styles.form}>
+
+          <Input
+            label="Seu nome"
+            value={name}
+            onChangeText={setName}
+            placeholder="Digite seu nome"
+          />
+
+
+          <Input
+            label="E-mail"
+            value={email}
+            onChangeText={setEmail}
+            placeholder="aluno@senac.com"
+            keyboardType="email-address"
+          />
+          <Input
+            label="Senha"
+            value={password}
+            onChangeText={setPassword}
+            placeholder="1234"
+            secureTextEntry
+          />
+
+
+          
+          {error ? (
+            <Text style={styles.error}>
+              {error}
+            </Text>
+          ) : null}
+
+
+          {/* botão */}
+
+          <Botao
+            label="Entrar"
+            onPress={handleSubmit}
+          />
+
+        </View>
+
+      </ScrollView>
+
+    </KeyboardAvoidingView>
+  );
 }
 
+
 const styles = StyleSheet.create({
-    flex: {
+flex: {
         flex: 1,
         backgroundColor: colors.background,
     },
@@ -179,7 +222,8 @@ const styles = StyleSheet.create({
     form: {
         width:'100%',
         maxWidth: 420,
-        alignSelf:'center'
+        alignSelf:'center',
+        gap: 10,
     }, 
     error : {
         color:colors.danger,
@@ -187,6 +231,4 @@ const styles = StyleSheet.create({
         fontWeight:'600',
         lineHeight:18,
     }
-
-
-})
+});
