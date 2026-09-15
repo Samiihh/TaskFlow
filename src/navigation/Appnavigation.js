@@ -4,6 +4,7 @@ import { colors } from "../styles/colors";
 import SplashScreen from "../screens/SplashScreen";
 import LoginScreen from "../screens/LoginScreen";
 import HomeScreen from "../screens/HomeScreen";
+import NewTaskScreen from "../screens/NewTaskScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -67,6 +68,22 @@ export default function AppNavigation({
                         />
                     )}
 
+
+                </Stack.Screen>
+
+                {/* Tela de Nova tarefa */}
+
+                <Stack.Screen
+                    name="NovaTarefa"
+                    options={{ title: 'Nova Tarefa'}}
+                >
+                    {(screenProps) => (
+
+                        <NewTaskScreen
+                            {...screenProps}
+                            onAddTask={onAddTask}
+                        />
+                    )}
 
                 </Stack.Screen>
 
