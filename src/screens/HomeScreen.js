@@ -26,7 +26,7 @@ export default function HomeScreen({ navigation, userName, tasks, onToggleTask }
                 renderItem={({ item }) => (
                     <TaskCard
                         task={item}
-                        onPress={() => openTask(item)}
+                        // onPress={() => openTask(item)}
                         onToggleDone={onToggleTask}
 
                     />
